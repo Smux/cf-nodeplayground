@@ -3,4 +3,4 @@ path: .
 buildpack: nodejs_buildpack
 memory: 128M
 services:
-  - nodeauth-xsuaa
+  - nodeauth-xsuaa # has to be created on the space of your choice by using the xs-security.json in the root of this project
