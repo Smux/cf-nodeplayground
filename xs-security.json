@@ -1,0 +1,36 @@
+{
+  "xsappname": "nodeauthxs",
+  "tenant-mode": "dedicated",
+  "description": "Sample node app",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "Display Users"
+    },
+    {
+      "name": "$XSAPPNAME.Update",
+      "description": "Update Users"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": ["uaa.user"]
+    },
+    {
+      "name": "NodeViewer",
+      "description": "View Users",
+      "scope-references": ["$XSAPPNAME.Display"]
+    },
+    {
+      "name": "NodeManager",
+      "description": "Maintain Users",
+      "scope-references": ["$XSAPPNAME.Display", "$XSAPPNAME.Update"]
+    }
+  ]
+}

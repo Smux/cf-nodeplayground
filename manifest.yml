@@ -1,0 +1,6 @@
+name: nodeauth
+path: .
+buildpack: nodejs_buildpack
+memory: 128M
+services:
+  - nodeauth-xsuaa
