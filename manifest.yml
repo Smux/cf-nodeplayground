@@ -1,6 +1,22 @@
-name: nodeauth
-path: .
-buildpack: nodejs_buildpack
-memory: 128M
-services:
-  - nodeauth-xsuaa # has to be created on the space of your choice by using the xs-security.json in the root of this project
+---
+applications:
+  - name: nodeauth
+    path: .
+    buildpack: nodejs_buildpack
+    memory: 128M
+    random-route: true
+    services:
+      - nodeauth-uaa # has to be created on the space of your choice by using the xs-security.json in the root of this project
+  - name: nodeauth-router
+    path: router
+    buildpack: nodejs_buildpack
+    memory: 128M
+    env:
+      destinations: >
+        [
+          {"name":"nodeauth-dest",
+           "url":"https://nodeauth-responsible-jaguar.cfapps.eu10.hana.ondemand.com",
+           "forwardAuthToken": true}
+        ]
+    services:
+      - nodeauth-uaa

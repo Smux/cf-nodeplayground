@@ -58,7 +58,7 @@ app.use(passport.initialize());
 app.use(passport.authenticate('JWT', { session: false }));
 
 app.get('/', function (req, res) {
-//  logJWT(req);
+  //  logJWT(req);
   res.status(200).json({
     msg: 'Hello world!',
   });
@@ -68,6 +68,10 @@ app.get('/test', function (req, res) {
   res.status(200).json({
     msg: 'Hello test!',
   });
+});
+
+app.get('/number', function (req, res) {
+  res.send('17');
 });
 
 app.get('/flp', function (req, res) {
